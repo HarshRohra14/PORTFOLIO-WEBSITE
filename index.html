@@ -1,680 +1,798 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Epic Portfolio - Harsh Rohra</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --clr-primary: #4f46e5;
-      --clr-secondary: #818cf8;
-      --clr-bg-light: #f9fafb;
-      --clr-bg-dark: #111827;
-      --clr-text-light: #1f2937;
-      --clr-text-dark: #d1d5db;
-      --transition-speed: 0.3s;
-      --font-family: 'Poppins', sans-serif;
-    }
-    [data-theme="dark"] {
-      --clr-bg: var(--clr-bg-dark);
-      --clr-text: var(--clr-text-dark);
-      --clr-nav-bg: #1f2937;
-      --clr-btn-bg: var(--clr-primary);
-      --clr-btn-text: #fff;
-      --clr-card-bg: #374151;
-      --clr-link-hover: var(--clr-secondary);
-    }
-    [data-theme="light"] {
-      --clr-bg: var(--clr-bg-light);
-      --clr-text: var(--clr-text-light);
-      --clr-nav-bg: #fff;
-      --clr-btn-bg: var(--clr-primary);
-      --clr-btn-text: #fff;
-      --clr-card-bg: #fff;
-      --clr-link-hover: var(--clr-primary);
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: var(--font-family);
-      background-color: var(--clr-bg);
-      color: var(--clr-text);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      min-height: 100vh;
-    }
-    a {
-      color: var(--clr-primary);
-      text-decoration: none;
-      transition: color var(--transition-speed);
-    }
-    a:hover,
-    a:focus {
-      color: var(--clr-link-hover);
-      outline: none;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: var(--clr-nav-bg);
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-      z-index: 1000;
-    }
-    nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-    }
-    nav .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: var(--clr-primary);
-      letter-spacing: 2px;
-      cursor: default;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav ul li {
-      font-weight: 500;
-      font-size: 1rem;
-    }
-    nav ul li a {
-      padding: 0.3rem 0.5rem;
-      border-radius: 5px;
-    }
-    nav ul li a.active,
-    nav ul li a:hover,
-    nav ul li a:focus {
-      background-color: var(--clr-primary);
-      color: #fff;
-      font-weight: 700;
-    }
-    section {
-      max-width: 1100px;
-      margin: 6rem auto 3rem auto;
-      padding: 0 2rem;
-    }
-    h1, h2, h3 {
-      color: var(--clr-primary);
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-top: 2rem;
-    }
-    p {
-      margin-bottom: 1.25rem;
-      font-weight: 300;
-      font-size: 1.1rem;
-    }
-    .btn-primary {
-      display: inline-block;
-      background-color: var(--clr-btn-bg);
-      color: var(--clr-btn-text);
-      padding: 0.6rem 1.4rem;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color var(--transition-speed);
-      text-align:center;
-      user-select:none;
-      box-shadow: 0 4px 15px rgba(79,70,229,0.4);
-    }
-    .btn-primary:hover,
-    .btn-primary:focus {
-      background-color: var(--clr-secondary);
-      outline: none;
-    }
-    /* Hero section */
-    #home {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding-top: 5rem;
-      gap: 1rem;
-    }
-    #home .intro {
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: var(--clr-secondary);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      animation: slideInLeft 1s ease forwards;
-      opacity: 0;
-    }
-    #home h1 {
-      animation: slideInLeft 1.3s ease forwards;
-      opacity: 0;
-    }
-    #home p.lead {
-      font-size: 1.2rem;
-      max-width: 600px;
-      line-height: 1.5;
-      color: var(--clr-text);
-      opacity: 0;
-      animation: slideInLeft 1.6s ease forwards;
-    }
-    #home .btn-primary {
-      margin-top: 1.25rem;
-      font-size: 1.1rem;
-      opacity: 0;
-      animation: slideInLeft 1.9s ease forwards;
-    }
-    @keyframes slideInLeft {
-      to {
-        opacity: 1;
-        transform: translateX(0);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Epic Portfolio - Harsh Rohra</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --clr-primary: #4f46e5;
+        --clr-secondary: #818cf8;
+        --clr-bg-light: #f9fafb;
+        --clr-bg-dark: #111827;
+        --clr-text-light: #1f2937;
+        --clr-text-dark: #d1d5db;
+        --transition-speed: 0.3s;
+        --font-family: "Poppins", sans-serif;
       }
-      from {
-        opacity: 0;
-        transform: translateX(-100px);
+      [data-theme="dark"] {
+        --clr-bg: var(--clr-bg-dark);
+        --clr-text: var(--clr-text-dark);
+        --clr-nav-bg: #1f2937;
+        --clr-btn-bg: var(--clr-primary);
+        --clr-btn-text: #fff;
+        --clr-card-bg: #374151;
+        --clr-link-hover: var(--clr-secondary);
       }
-    }
-    /* About Section */
-    #about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    #about img {
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgb(0 0 0 / 0.15);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    #about img:hover,
-    #about img:focus {
-      transform: scale(1.05);
-      outline: none;
-    }
-    #about .content p {
-      font-weight: 400;
-      color: var(--clr-text);
-    }
-    /* Skills Section */
-    #skills ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem 2rem;
-      list-style: none;
-      margin-top: 1rem;
-    }
-    #skills li {
-      background: var(--clr-card-bg);
-      padding: 0.8rem 1.2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      color: var(--clr-primary);
-      box-shadow: 0 4px 6px rgb(79 70 229 / 0.3);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      cursor: default;
-      user-select:none;
-    }
-    #skills li:hover,
-    #skills li:focus {
-      background-color: var(--clr-primary);
-      color: white;
-      transform: scale(1.1);
-      outline: none;
-    }
-    /* Projects Section */
-    #projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-      margin-top: 1.5rem;
-    }
-    .project-card {
-      margin-bottom: 20px;
-      background: var(--clr-card-bg);
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgb(0 0 0 / 0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .project-card:hover,
-    .project-card:focus-within {
-      transform: translateY(-10px);
-      outline: none;
-      box-shadow: 0 20px 40px rgb(79 70 229 / 0.35);
-    }
-    .project-card img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-    .project-card-content {
-      padding: 1rem 1.25rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .project-card-content h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.25rem;
-    }
-    .project-card-content p {
-      flex-grow: 1;
-      font-size: 1rem;
-      color: var(--clr-text);
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-    .project-card-content a {
-      color: var(--clr-primary);
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: color var(--transition-speed);
-    }
-    .project-card-content a:hover,
-    .project-card-content a:focus {
-      color: var(--clr-secondary);
-      outline: none;
-    }
-    /* Experience Section */
-    #experience ul {
-      list-style: none;
-      margin-top: 0.5rem;
-    }
-    #experience li {
-      margin-bottom: 1.25rem;
-      background: var(--clr-card-bg);
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      box-shadow: 0 8px 24px rgb(0 0 0 / 0.05);
-      transition: background-color 0.3s ease;
-      cursor: default;
-    }
-    #experience li:hover,
-    #experience li:focus {
-      background: var(--clr-primary);
-      color: #fff;
-      outline: none;
-    }
-    #experience li h4 {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    #experience li p {
-      font-weight: 400;
-      font-size: 1rem;
-      color: inherit;
-    }
-    /* Testimonials Section */
-    #testimonials {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      padding-bottom: 1rem;
-      scroll-behavior: smooth;
-    }
-    .testimonial-card {
-      flex: 0 0 320px;
-      background: var(--clr-card-bg);
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgb(0 0 0 / 0.1);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      cursor: default;
-      outline-offset: 4px;
-      transition: box-shadow 0.3s ease;
-    }
-    .testimonial-card:focus {
-      box-shadow: 0 0 15px 3px var(--clr-primary);
-      outline: none;
-    }
-    .testimonial-text {
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--clr-text);
-      margin-bottom: 1rem;
-      line-height: 1.3;
-    }
-    .testimonial-author {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--clr-primary);
-      text-align: right;
-    }
-    /* Contact Section */
-    #contact form {
-      max-width: 480px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    #contact label {
-      font-weight: 600;
-    }
-    #contact input,
-    #contact textarea {
-      padding: 0.75rem 1rem;
-      border: 2px solid var(--clr-primary);
-      border-radius: 10px;
-      font-family: var(--font-family);
-      font-size: 1rem;
-      resize: vertical;
-      transition: border-color 0.3s ease;
-    }
-    #contact input:focus,
-    #contact textarea:focus {
-      border-color: var(--clr-secondary);
-      outline: none;
-    }
-    #contact button {
-      max-width: 140px;
-      align-self: center;
-    }
-    #contact .success-message,
-    #contact .error-message {
-      font-weight: 600;
-      text-align: center;
-      margin-top: 0.8rem;
-      display: none;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-    }
-    #contact .success-message {
-      color: #15803d;
-      background-color: #dcfce7;
-    }
-    #contact .error-message {
-      color: #b91c1c;
-      background-color: #fee2e2;
-    }
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 1rem 1rem;
-      font-weight: 400;
-      font-size: 0.9rem;
-      color: var(--clr-secondary);
-      border-top: 1px solid var(--clr-primary);
-      margin-top: 4rem;
-    }
-    /* Responsive */
-    @media (max-width: 900px) {
-      #about {
-        grid-template-columns: 1fr;
+      [data-theme="light"] {
+        --clr-bg: var(--clr-bg-light);
+        --clr-text: var(--clr-text-light);
+        --clr-nav-bg: #fff;
+        --clr-btn-bg: var(--clr-primary);
+        --clr-btn-text: #fff;
+        --clr-card-bg: #fff;
+        --clr-link-hover: var(--clr-primary);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(--font-family);
+        background-color: var(--clr-bg);
+        color: var(--clr-text);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+        min-height: 100vh;
+      }
+      a {
+        color: var(--clr-primary);
+        text-decoration: none;
+        transition: color var(--transition-speed);
+      }
+      a:hover,
+      a:focus {
+        color: var(--clr-link-hover);
+        outline: none;
+      }
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: var(--clr-nav-bg);
+        box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+        z-index: 1000;
+      }
+      nav {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+      nav .logo {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--clr-primary);
+        letter-spacing: 2px;
+        cursor: default;
       }
       nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+      }
+      nav ul li {
+        font-weight: 500;
+        font-size: 1rem;
+      }
+      nav ul li a {
+        padding: 0.3rem 0.5rem;
+        border-radius: 5px;
+      }
+      nav ul li a.active,
+      nav ul li a:hover,
+      nav ul li a:focus {
+        background-color: var(--clr-primary);
+        color: #fff;
+        font-weight: 700;
+      }
+      section {
+        max-width: 1100px;
+        margin: 6rem auto 3rem auto;
+        padding: 0 2rem;
+      }
+      h1,
+      h2,
+      h3 {
+        color: var(--clr-primary);
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+      h1 {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: 2rem;
+        margin-top: 2rem;
+      }
+      p {
+        margin-bottom: 1.25rem;
+        font-weight: 300;
+        font-size: 1.1rem;
+      }
+      .btn-primary {
+        display: inline-block;
+        background-color: var(--clr-btn-bg);
+        color: var(--clr-btn-text);
+        padding: 0.6rem 1.4rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color var(--transition-speed);
+        text-align: center;
+        user-select: none;
+        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+      }
+      .btn-primary:hover,
+      .btn-primary:focus {
+        background-color: var(--clr-secondary);
+        outline: none;
+      }
+      /* Hero section */
+      #home {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 5rem;
         gap: 1rem;
       }
-    }
-    @media (max-width: 500px) {
+      #home .intro {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: var(--clr-secondary);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        animation: slideInLeft 1s ease forwards;
+        opacity: 0;
+      }
       #home h1 {
-        font-size: 2rem;
+        animation: slideInLeft 1.3s ease forwards;
+        opacity: 0;
       }
-    }
-    /* Dark and Light mode toggle button */
-    #theme-toggle {
-      background: none;
-      border: 2px solid var(--clr-primary);
-      border-radius: 9999px;
-      padding: 0.3rem 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      color: var(--clr-primary);
-      transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
-      user-select:none;
-    }
-    #theme-toggle:hover,
-    #theme-toggle:focus {
-      background-color: var(--clr-primary);
-      color: white;
-      outline: none;
-    }
-  </style>
-</head>
-<body data-theme="light">
-
-  <header>
-    <nav aria-label="Primary navigation">
-      <div class="logo" aria-label="Logo">Harsh Rohra</div>
-      <ul role="list">
-        <li><a href="#home" class="active" aria-current="page">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button id="theme-toggle" aria-label="Toggle dark and light theme">Dark Mode</button>
-    </nav>
-  </header>
-
-  <main>
-    <section id="home" tabindex="-1" aria-label="Introduction">
-      <div class="intro" aria-hidden="true">Web Developer & Designer</div>
-      <h1>Hello, I'm Harsh Rohra.</h1>
-      <p class="lead">I build amazing websites and web apps with creative design and clean, efficient code.</p>
-      <a href="#projects" class="btn-primary">View My Work</a>
-    </section>
-
-    <section id="about" tabindex="-1" aria-label="About Me">
-      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=720&q=80" alt="Portrait of Your Name" />
-      <div class="content">
-        <h2>About Me</h2>
-        <p>I'm a passionate full-stack web developer with expertise in frontend and backend technologies, delivering high-quality projects that meet client needs and stand out visually.</p>
-        <p>I love crafting beautiful digital experiences with a focus on accessibility, performance, and modern design trends.</p>
-      </div>
-    </section>
-
-    <section id="skills" tabindex="-1" aria-label="Skills">
-      <h2>Skills</h2>
-      <ul role="list" aria-label="List of skills">
-        <li>HTML5</li>
-        <li>CSS3 & Sass</li>
-        <li>JavaScript (ES6+)</li>
-        <li>React.js</li>
-        <li>Node.js & Express</li>
-        <li>Python</li>
-        <li>Django</li>
-        <li>SQL & NoSQL</li>
-        <li>RESTful APIs</li>
-        <li>Git & GitHub</li>
-        <li>Webpack & Vite</li>
-      </ul>
-    </section>
-
-    <section id="projects" tabindex="-1" aria-label="Projects">
-      <h2>Projects</h2>
-      <div class="projects-grid">
-        <article tabindex="0" class="project-card" aria-labelledby="project1-title" role="region">
-          <img src="https://images.unsplash.com/photo-1532619675605-7b16b9e5d8d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=720&q=80" alt="Screenshot of Portfolio Website" />
-          <div class="project-card-content">
-            <h3 id="project1-title">Creative Portfolio Website</h3>
-            <p>A modern portfolio website built with React and styled-components to showcase projects with smooth navigation and dynamic content.</p>
-            <a href="https://github.com/yourname/creative-portfolio" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-          </div>
-        </article>
-
-        <article tabindex="0" class="project-card" aria-labelledby="project2-title" role="region">
-          <img src="https://images.unsplash.com/photo-1519261466449-3323f8d3d1c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=720&q=80" alt="E-commerce Website Screenshot" />
-          <div class="project-card-content">
-            <h3 id="project2-title">RayBan E-commerce Storefront</h3>
-            <p>A scalable and responsive online store built with Vue.js and Firebase backend, featuring user authentication and real-time inventory updates.</p>
-            <a href="https://github.com/HarshRohra14/RAYBAN-WEBSITE" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="experience" tabindex="-1" aria-label="Experience">
-      <h2>Experience</h2>
-      <ul>
-        <li tabindex="0">
-          <h4>Frontend Developer</h4>
-          <p>June 2023 - Present</p>
-          <p>Developed responsive user interfaces and collaborated with designers to implement interactive web experiences optimized for performance.</p>
-        </li>
-        <li tabindex="0">
-          <h4>Full Stack Developer.</h4>
-          <p>Jan 2025 - May 2025</p>
-          <p>Built scalable web applications with React, Node.js, and MongoDB. Led integration of third-party APIs and improved app security.</p>
-        </li>
-      </ul>
-    </section>
-
-    <section id="testimonials" tabindex="-1" aria-label="Testimonials">
-      <h2>Testimonials</h2>
-      <div id="testimonials-carousel" role="list">
-        <article tabindex="0" class="testimonial-card" role="listitem" aria-label="Testimonial from John Doe">
-          <p class="testimonial-text">"Your Name is an incredibly talented developer who delivered our project ahead of schedule and with exceptional quality."</p>
-          <p class="testimonial-author">— John Doe, CEO of TechStart</p>
-        </article>
-        <article tabindex="0" class="testimonial-card" role="listitem" aria-label="Testimonial from Jane Smith">
-          <p class="testimonial-text">"I highly recommend Your Name for any web development role. Their attention to detail and creativity is outstanding."</p>
-          <p class="testimonial-author">— Jane Smith, Design Lead at Creative Agency</p>
-        </article>
-        <article tabindex="0" class="testimonial-card" role="listitem" aria-label="Testimonial from Mike Johnson">
-          <p class="testimonial-text">"Professional, reliable, and innovative. Working with Your Name was an absolute pleasure. Highly satisfied with the results."</p>
-          <p class="testimonial-author">— Mike Johnson, CTO of Innovatech</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="contact" tabindex="-1" aria-label="Contact Me">
-      <h2>Contact</h2>
-      <form id="contact-form" novalidate>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error" />
-        <span id="name-error" class="error-message" aria-live="polite"></span>
-        
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error" />
-        <span id="email-error" class="error-message" aria-live="polite"></span>
-        
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="message-error"></textarea>
-        <span id="message-error" class="error-message" aria-live="polite"></span>
-        
-        <button type="submit" class="btn-primary">Send Message</button>
-        <p class="success-message" aria-live="polite"></p>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2024 Your Name — Created with ❤️ by You
-  </footer>
-
-  <script>
-    // Theme toggle logic
-    (function() {
-      const toggleButton = document.getElementById('theme-toggle');
-      const body = document.body;
-      const currentTheme = localStorage.getItem('theme') || 'light';
-      body.setAttribute('data-theme', currentTheme);
-      toggleButton.textContent = currentTheme === 'light' ? 'Dark Mode' : 'Light Mode';
-
-      toggleButton.addEventListener('click', () => {
-        const theme = body.getAttribute('data-theme');
-        if (theme === 'light') {
-          body.setAttribute('data-theme', 'dark');
-          localStorage.setItem('theme', 'dark');
-          toggleButton.textContent = 'Light Mode';
-        } else {
-          body.setAttribute('data-theme', 'light');
-          localStorage.setItem('theme', 'light');
-          toggleButton.textContent = 'Dark Mode';
+      #home p.lead {
+        font-size: 1.2rem;
+        max-width: 600px;
+        line-height: 1.5;
+        color: var(--clr-text);
+        opacity: 0;
+        animation: slideInLeft 1.6s ease forwards;
+      }
+      #home .btn-primary {
+        margin-top: 1.25rem;
+        font-size: 1.1rem;
+        opacity: 0;
+        animation: slideInLeft 1.9s ease forwards;
+      }
+      @keyframes slideInLeft {
+        to {
+          opacity: 1;
+          transform: translateX(0);
         }
-      });
-    })();
-
-    // Navigation active link highlighting while scrolling
-    (function() {
-      const sections = document.querySelectorAll('main section[id]');
-      const navLinks = document.querySelectorAll('nav ul li a');
-
-      function changeActiveLink() {
-        let index = sections.length;
-
-        while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
-        navLinks.forEach(link => link.classList.remove('active'));
-        if (navLinks[index]) navLinks[index].classList.add('active');
+        from {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
       }
-      window.addEventListener('scroll', changeActiveLink);
-      changeActiveLink();
-    })();
-
-    // Contact form validation and simulated sending
-    (function() {
-      const form = document.getElementById('contact-form');
-      const fields = ['name', 'email', 'message'];
-      const errorMessages = {
-        name: 'Please enter your name.',
-        email: 'Please enter a valid email address.',
-        message: 'Please enter your message.'
-      };
-
-      function validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      /* About Section */
+      #about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
       }
+      #about img {
+        width: 100%;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgb(0 0 0 / 0.15);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      #about img:hover,
+      #about img:focus {
+        transform: scale(1.05);
+        outline: none;
+      }
+      #about .content p {
+        font-weight: 400;
+        color: var(--clr-text);
+      }
+      /* Skills Section */
+      #skills ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 2rem;
+        list-style: none;
+        margin-top: 1rem;
+      }
+      #skills li {
+        background: var(--clr-card-bg);
+        padding: 0.8rem 1.2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        color: var(--clr-primary);
+        box-shadow: 0 4px 6px rgb(79 70 229 / 0.3);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        cursor: default;
+        user-select: none;
+      }
+      #skills li:hover,
+      #skills li:focus {
+        background-color: var(--clr-primary);
+        color: white;
+        transform: scale(1.1);
+        outline: none;
+      }
+      /* Projects Section */
+      #projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+        margin-top: 1.5rem;
+      }
+      .project-card {
+        margin-bottom: 20px;
+        background: var(--clr-card-bg);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgb(0 0 0 / 0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      .project-card:hover,
+      .project-card:focus-within {
+        transform: translateY(-10px);
+        outline: none;
+        box-shadow: 0 20px 40px rgb(79 70 229 / 0.35);
+      }
+      .project-card img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        display: block;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .project-card-content {
+        padding: 1rem 1.25rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .project-card-content h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+      }
+      .project-card-content p {
+        flex-grow: 1;
+        font-size: 1rem;
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+        font-weight: 400;
+      }
+      .project-card-content a {
+        color: var(--clr-primary);
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: color var(--transition-speed);
+      }
+      .project-card-content a:hover,
+      .project-card-content a:focus {
+        color: var(--clr-secondary);
+        outline: none;
+      }
+      /* Experience Section */
+      #experience ul {
+        list-style: none;
+        margin-top: 0.5rem;
+      }
+      #experience li {
+        margin-bottom: 1.25rem;
+        background: var(--clr-card-bg);
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+        box-shadow: 0 8px 24px rgb(0 0 0 / 0.05);
+        transition: background-color 0.3s ease;
+        cursor: default;
+      }
+      #experience li:hover,
+      #experience li:focus {
+        background: var(--clr-primary);
+        color: #fff;
+        outline: none;
+      }
+      #experience li h4 {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+      #experience li p {
+        font-weight: 400;
+        font-size: 1rem;
+        color: inherit;
+      }
+      /* Testimonials Section */
+      #testimonials {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        scroll-behavior: smooth;
+      }
+      .testimonial-card {
+        margin-bottom: 20px;
+        flex: 0 0 320px;
+        background: var(--clr-card-bg);
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgb(0 0 0 / 0.1);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        cursor: default;
+        outline-offset: 4px;
+        transition: box-shadow 0.3s ease;
+      }
+      .testimonial-card:focus {
+        box-shadow: 0 0 15px 3px var(--clr-primary);
+        outline: none;
+      }
+      .testimonial-text {
+        font-style: italic;
+        font-size: 1rem;
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+      .testimonial-author {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--clr-primary);
+        text-align: right;
+      }
+      /* Contact Section */
+      #contact form {
+        max-width: 480px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      #contact label {
+        font-weight: 600;
+      }
+      #contact input,
+      #contact textarea {
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--clr-primary);
+        border-radius: 10px;
+        font-family: var(--font-family);
+        font-size: 1rem;
+        resize: vertical;
+        transition: border-color 0.3s ease;
+      }
+      #contact input:focus,
+      #contact textarea:focus {
+        border-color: var(--clr-secondary);
+        outline: none;
+      }
+      #contact button {
+        max-width: 140px;
+        align-self: center;
+      }
+      #contact .success-message,
+      #contact .error-message {
+        font-weight: 600;
+        text-align: center;
+        margin-top: 0.8rem;
+        display: none;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+      }
+      #contact .success-message {
+        color: #15803d;
+        background-color: #dcfce7;
+      }
+      #contact .error-message {
+        color: #b91c1c;
+        background-color: #fee2e2;
+      }
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 1rem 1rem;
+        font-weight: 400;
+        font-size: 0.9rem;
+        color: var(--clr-secondary);
+        border-top: 1px solid var(--clr-primary);
+        margin-top: 4rem;
+      }
+      /* Responsive */
+      @media (max-width: 900px) {
+        #about {
+          grid-template-columns: 1fr;
+        }
+        nav ul {
+          gap: 1rem;
+        }
+      }
+      @media (max-width: 500px) {
+        #home h1 {
+          font-size: 2rem;
+        }
+      }
+      /* Dark and Light mode toggle button */
+      #theme-toggle {
+        background: none;
+        border: 2px solid var(--clr-primary);
+        border-radius: 9999px;
+        padding: 0.3rem 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--clr-primary);
+        transition: background-color var(--transition-speed),
+          color var(--transition-speed), border-color var(--transition-speed);
+        user-select: none;
+      }
+      #theme-toggle:hover,
+      #theme-toggle:focus {
+        background-color: var(--clr-primary);
+        color: white;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body data-theme="light">
+    <header>
+      <nav aria-label="Primary navigation">
+        <div class="logo" aria-label="Logo">Harsh Rohra</div>
+        <ul role="list">
+          <li><a href="#home" class="active" aria-current="page">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Toggle dark and light theme">
+          Dark Mode
+        </button>
+      </nav>
+    </header>
 
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let valid = true;
-        fields.forEach(field => {
-          const input = form[field];
-          const errorEl = document.getElementById(field + '-error');
-          errorEl.textContent = '';
-          if (!input.value.trim()) {
-            errorEl.textContent = errorMessages[field];
-            valid = false;
-          } else if (field === 'email' && !validateEmail(input.value.trim())) {
-            errorEl.textContent = errorMessages.email;
-            valid = false;
+    <main>
+      <section id="home" tabindex="-1" aria-label="Introduction">
+        <div class="intro" aria-hidden="true">Web Developer & Designer</div>
+        <h1>Hello, I'm Harsh Rohra.</h1>
+        <p class="lead">
+          I build amazing websites and web apps with creative design and clean,
+          efficient code.
+        </p>
+        <a href="#projects" class="btn-primary">View My Work</a>
+      </section>
+
+      <section id="about" tabindex="-1" aria-label="About Me">
+        <img
+          src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=720&q=80"
+          alt="Portrait of Your Name"
+        />
+        <div class="content">
+          <h2>About Me</h2>
+          <p>
+            I'm a passionate full-stack web developer with expertise in frontend
+            and backend technologies, delivering high-quality projects that meet
+            client needs and stand out visually.
+          </p>
+          <p>
+            I love crafting beautiful digital experiences with a focus on
+            accessibility, performance, and modern design trends.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills" tabindex="-1" aria-label="Skills">
+        <h2>Skills</h2>
+        <ul role="list" aria-label="List of skills">
+          <li>HTML5</li>
+          <li>CSS3 & Sass</li>
+          <li>JavaScript (ES6+)</li>
+          <li>React.js</li>
+          <li>Node.js & Express</li>
+          <li>Python</li>
+          <li>Django</li>
+          <li>SQL & NoSQL</li>
+          <li>RESTful APIs</li>
+          <li>Git & GitHub</li>
+          <li>Webpack & Vite</li>
+        </ul>
+      </section>
+
+      <section id="projects" tabindex="-1" aria-label="Projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <article
+            tabindex="0"
+            class="project-card"
+            aria-labelledby="project1-title"
+            role="region"
+          >
+            <img
+              src="portfolio.png"
+              alt="Screenshot of Portfolio Website"
+            />
+            <div class="project-card-content">
+              <h3 id="project1-title">Creative Portfolio Website</h3>
+              <p>
+                A modern portfolio website built with React and
+                styled-components to showcase projects with smooth navigation
+                and dynamic content.
+              </p>
+              <a
+                href="https://harshrohra14.github.io/PORTFOLIO-WEBSITE/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub Repo</a
+              >
+            </div>
+          </article>
+
+          <article
+            tabindex="0"
+            class="project-card"
+            aria-labelledby="project2-title"
+            role="region"
+          >
+            <img
+              src="rayban.png"
+              alt="E-commerce Website Screenshot"
+            />
+            <div class="project-card-content">
+              <h3 id="project2-title">RayBan E-commerce Storefront</h3>
+              <p>
+                A scalable and responsive online store built with Vue.js and
+                Firebase backend, featuring user authentication and real-time
+                inventory updates.
+              </p>
+              <a
+                href="https://github.com/HarshRohra14/RAYBAN-WEBSITE"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub Repo</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" tabindex="-1" aria-label="Experience">
+        <h2>Experience</h2>
+        <ul>
+          <li tabindex="0">
+            <h4>Frontend Developer</h4>
+            <p>June 2023 - Present</p>
+            <p>
+              Developed responsive user interfaces and collaborated with
+              designers to implement interactive web experiences optimized for
+              performance.
+            </p>
+          </li>
+          <li tabindex="0">
+            <h4>Full Stack Developer.</h4>
+            <p>Jan 2025 - May 2025</p>
+            <p>
+              Built scalable web applications with React, Node.js, and MongoDB.
+              Led integration of third-party APIs and improved app security.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="testimonials" tabindex="-1" aria-label="Testimonials">
+        <h2>Testimonials</h2>
+        <div id="testimonials-carousel" role="list">
+          <article
+            tabindex="0"
+            class="testimonial-card"
+            role="listitem"
+            aria-label="Testimonial from John Doe"
+          >
+            <p class="testimonial-text">
+              "Your Name is an incredibly talented developer who delivered our
+              project ahead of schedule and with exceptional quality."
+            </p>
+            <p class="testimonial-author">— John Doe, CEO of TechStart</p>
+          </article>
+          <article
+            tabindex="0"
+            class="testimonial-card"
+            role="listitem"
+            aria-label="Testimonial from Jane Smith"
+          >
+            <p class="testimonial-text">
+              "I highly recommend Your Name for any web development role. Their
+              attention to detail and creativity is outstanding."
+            </p>
+            <p class="testimonial-author">
+              — Jane Smith, Design Lead at Creative Agency
+            </p>
+          </article>
+          <article
+            tabindex="0"
+            class="testimonial-card"
+            role="listitem"
+            aria-label="Testimonial from Mike Johnson"
+          >
+            <p class="testimonial-text">
+              "Professional, reliable, and innovative. Working with Your Name
+              was an absolute pleasure. Highly satisfied with the results."
+            </p>
+            <p class="testimonial-author">— Mike Johnson, CTO of Innovatech</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" tabindex="-1" aria-label="Contact Me">
+        <h2>Contact</h2>
+        <form id="contact-form" novalidate>
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            aria-required="true"
+            aria-describedby="name-error"
+          />
+          <span id="name-error" class="error-message" aria-live="polite"></span>
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            aria-required="true"
+            aria-describedby="email-error"
+          />
+          <span
+            id="email-error"
+            class="error-message"
+            aria-live="polite"
+          ></span>
+
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            aria-required="true"
+            aria-describedby="message-error"
+          ></textarea>
+          <span
+            id="message-error"
+            class="error-message"
+            aria-live="polite"
+          ></span>
+
+          <button type="submit" class="btn-primary">Send Message</button>
+          <p class="success-message" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>&copy; 2025 Harsh Rohra — Created with ❤️ by You</footer>
+
+    <script>
+      // Theme toggle logic
+      (function () {
+        const toggleButton = document.getElementById("theme-toggle");
+        const body = document.body;
+        const currentTheme = localStorage.getItem("theme") || "light";
+        body.setAttribute("data-theme", currentTheme);
+        toggleButton.textContent =
+          currentTheme === "light" ? "Dark Mode" : "Light Mode";
+
+        toggleButton.addEventListener("click", () => {
+          const theme = body.getAttribute("data-theme");
+          if (theme === "light") {
+            body.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+            toggleButton.textContent = "Light Mode";
+          } else {
+            body.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
+            toggleButton.textContent = "Dark Mode";
           }
         });
-        const successMessage = form.querySelector('.success-message');
-        if (valid) {
-          successMessage.textContent = 'Sending message...';
-          // Simulate sending
-          setTimeout(() => {
-            successMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-            form.reset();
-          }, 1500);
-        } else {
-          successMessage.textContent = '';
+      })();
+
+      // Navigation active link highlighting while scrolling
+      (function () {
+        const sections = document.querySelectorAll("main section[id]");
+        const navLinks = document.querySelectorAll("nav ul li a");
+
+        function changeActiveLink() {
+          let index = sections.length;
+
+          while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
+          navLinks.forEach((link) => link.classList.remove("active"));
+          if (navLinks[index]) navLinks[index].classList.add("active");
         }
-      });
-    })();
-  </script>
+        window.addEventListener("scroll", changeActiveLink);
+        changeActiveLink();
+      })();
 
-</body>
+      // Contact form validation and simulated sending
+      (function () {
+        const form = document.getElementById("contact-form");
+        const fields = ["name", "email", "message"];
+        const errorMessages = {
+          name: "Please enter your name.",
+          email: "Please enter a valid email address.",
+          message: "Please enter your message.",
+        };
+
+        function validateEmail(email) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          let valid = true;
+          fields.forEach((field) => {
+            const input = form[field];
+            const errorEl = document.getElementById(field + "-error");
+            errorEl.textContent = "";
+            if (!input.value.trim()) {
+              errorEl.textContent = errorMessages[field];
+              valid = false;
+            } else if (
+              field === "email" &&
+              !validateEmail(input.value.trim())
+            ) {
+              errorEl.textContent = errorMessages.email;
+              valid = false;
+            }
+          });
+          const successMessage = form.querySelector(".success-message");
+          if (valid) {
+            successMessage.textContent = "Sending message...";
+            // Simulate sending
+            setTimeout(() => {
+              successMessage.textContent =
+                "Thank you for your message! I will get back to you soon.";
+              form.reset();
+            }, 1500);
+          } else {
+            successMessage.textContent = "";
+          }
+        });
+      })();
+    </script>
+  </body>
 </html>
-
